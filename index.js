@@ -7,12 +7,16 @@
     {
         var clickedButton= this.textContent;
         makeSound(clickedButton);
+        buttonAnimation(clickedButton);
     });
 
  }
 
 //detecting keyboard press-(if key is pressed ,makesound)
- document.addEventListener("keyup",function(){makeSound(event.key);});
+ document.addEventListener("keyup",function()
+ {makeSound(event.key);
+    buttonAnimation(event.key);
+ });
 
 //sound function
  function makeSound(param)
@@ -43,7 +47,12 @@
              default: console.log(param);
          }
     }
-
+    function buttonAnimation(currentKey)
+        {
+           var activeButton= document.querySelector("."+currentKey);
+           activeButton.classList.add("pressed");
+           setTimeout(function(){activeButton.classList.remove ("pressed");},100);
+        }
 
 
 
